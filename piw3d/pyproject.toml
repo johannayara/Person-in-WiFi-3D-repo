@@ -1,0 +1,64 @@
+[project]
+name = "piw3d"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "johannayara", email = "johanna.jacomenoianuding@epfl.ch" }
+]
+requires-python = ">=3.10,<3.11"
+dependencies = [
+    "asynctest>=0.13.0",
+    "cityscapesscripts>=2.3.0",
+    "codecov>=2.1.13",
+    "coverage>=7.16.2",
+    "cython>=3.3.1",
+    "flake8>=7.4.1",
+    "h5py>=3.0.0",
+    "imagecorruptions>=1.1.2",
+    "interrogate>=1.7.0",
+    "isort==4.3.21",
+    "kwarray>=0.7.2",
+    "matplotlib>=3.10.9",
+    "mmcv",
+    "mmdet",
+    "numpy>=2.2.6",
+    "onnx>=1.23.2",
+    "onnxruntime>=1.8.0",
+    "pycocotools>=2.0.11",
+    "pytest>=9.2.0",
+    "PyWavelets>=1.1.0",
+    "scikit-learn>=1.7.2",
+    "scipy>=1.15.3",
+    "six>=1.17.0",
+    "terminaltables>=3.1.10",
+    "torch>=2.14.1",
+    "torchvision>=0.15.0",
+    "ubelt>=1.4.3",
+    "xdoctest>=0.10.0",
+    "xtcocotools>=1.14.3",
+    "yapf>=0.43.0",
+]
+
+[tool.uv]
+# mmcv 1.5.3 setup.py imports pkg_resources, removed in setuptools 82.
+build-constraint-dependencies = ["setuptools<82"]
+# mmcv/mmdet setup.py import torch at module level; isolated build envs need it.
+extra-build-dependencies = { mmcv = ["torch"], mmdet = ["torch"] }
+
+[tool.uv.workspace]
+members = [
+    "third_party/mmcv",
+    "third_party/mmdet",
+]
+
+[tool.uv.sources]
+mmcv = { path = "third_party/mmcv" }
+mmdet = { path = "third_party/mmdet" }
+
+[project.scripts]
+piw3d = "piw3d:main"
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"
