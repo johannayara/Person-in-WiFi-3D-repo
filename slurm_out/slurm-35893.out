@@ -1,0 +1,12 @@
+[2026-11-05 11:22:24] === setup: /cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d (venv=/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv) ===
+ERROR: Unable to locate a modulefile for 'cuda/13.0'
+[2026-11-05 11:22:24] WARN: 'module load cuda/13.0' failed; run 'module avail 2>&1 | grep -i cuda' and set CUDA_MODULE
+ERROR: Unable to locate a modulefile for 'python/3.10'
+[2026-11-05 11:22:24] WARN: 'module load python/3.10' failed; run 'module avail 2>&1 | grep -i python' and set PYTHON_MODULE
+[2026-11-05 11:22:24] uv 0.13.7 (>= 0.13.6) at /cluster/raid/home/jajo/.local/bin/uv
+Checked 2 packages in 59ms
+[2026-11-05 11:22:34] ERROR: nvcc CUDA 12.8 mismatches torch CUDA 13.0.
+[2026-11-05 11:22:34]        torch was built for CUDA 13.0, so mmcv's CUDA ops need
+[2026-11-05 11:22:34]        the same toolkit. Load it (e.g. CUDA_MODULE=cuda/13.0),
+[2026-11-05 11:22:34]        point CUDA_HOME at it, use CUDA_TOOLKIT=pip (installs a
+[2026-11-05 11:22:34]        matching toolkit from PyPI), or FORCE_CUDA=0 for CPU-only ops.

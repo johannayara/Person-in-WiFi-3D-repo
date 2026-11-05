@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# =============================================================================
+
 # Person-in-WiFi 3D -- SLURM environment setup
 #
 # Provisions the uv venv exactly as docs/get_started.md describes (mmcv with
@@ -29,16 +29,11 @@
 #   BUILD_MMCV_OPS=auto|1|0   FORCE_CUDA=auto|1|0   SYNC=auto|0
 #   PROVISION=auto|0   (0 = only uv sync, skip the docs install steps)
 # =============================================================================
-#SBATCH --job-name=piw3d-setup
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=16G
-#SBATCH --time=04:00:00
-#SBATCH --output=slurm-%x-%j.out
-#SBATCH --error=slurm-%x-%j.err
-# #SBATCH --partition=<your-partition>
-# #SBATCH --account=<your-account>
+#SBATCH --cpus-per-task 1
+#SBATCH --mem 16G
+#SBATCH --qos normal
+#SBATCH --time 6:00:00
+#SBATCH --gres gpu:a100:2
 
 set -euo pipefail
 

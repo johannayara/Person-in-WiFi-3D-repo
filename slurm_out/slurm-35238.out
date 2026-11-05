@@ -1,0 +1,296 @@
+[2026-11-04 11:37:18] === setup: /cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d (venv=/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv) ===
+ERROR: Unable to locate a modulefile for 'cuda/13.0'
+[2026-11-04 11:37:18] WARN: 'module load cuda/13.0' failed
+ERROR: Unable to locate a modulefile for 'python/3.10'
+[2026-11-04 11:37:18] WARN: 'module load python/3.10' failed
+[2026-11-04 11:37:18] uv sync --frozen (torch + locked deps; may need network access)
+   Building mmcv @ file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/third_party/mmcv
+   Building mmdet @ file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/third_party/mmdet
+   Building piw3d @ file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d
+      Built piw3d @ file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d
+Downloading sympy (6.0MiB)
+Downloading nvidia-cuda-runtime (2.1MiB)
+Downloading pygments (1.2MiB)
+Downloading cython (3.3MiB)
+Downloading nvidia-cuda-nvrtc (86.0MiB)
+Downloading opencv-python (70.4MiB)
+Downloading nvidia-cuda-cupti (10.2MiB)
+Downloading nvidia-cufft (204.2MiB)
+Downloading fonttools (5.0MiB)
+Downloading numpy (16.0MiB)
+Downloading cuda-bindings (6.8MiB)
+Downloading pillow (6.6MiB)
+Downloading nvidia-nvshmem-cu13 (57.6MiB)
+Downloading networkx (1.6MiB)
+Downloading onnxruntime (16.6MiB)
+Downloading kiwisolver (1.6MiB)
+Downloading triton (236.4MiB)
+Downloading nvidia-cufile (1.2MiB)
+Downloading onnx (8.5MiB)
+Downloading scikit-image (14.1MiB)
+Downloading nvidia-nvjitlink (40.5MiB)
+Downloading nvidia-cusparselt-cu13 (162.3MiB)
+Downloading nvidia-cudnn-cu13 (527.5MiB)
+Downloading matplotlib (8.4MiB)
+Downloading scikit-learn (9.2MiB)
+Downloading nvidia-cusolver (191.6MiB)
+Downloading nvidia-cublas (403.5MiB)
+Downloading scipy (35.9MiB)
+Downloading nvidia-nccl-cu13 (206.0MiB)
+Downloading imagecorruptions (2.0MiB)
+Downloading torch (528.9MiB)
+Downloading nvidia-cusparse (139.2MiB)
+Downloading nvidia-curand (56.8MiB)
+ Downloaded pygments
+ Downloaded nvidia-cufile
+ Downloaded kiwisolver
+ Downloaded networkx
+ Downloaded imagecorruptions
+ Downloaded nvidia-cuda-runtime
+ Downloaded cython
+ Downloaded fonttools
+ Downloaded pillow
+ Downloaded cuda-bindings
+ Downloaded sympy
+ Downloaded matplotlib
+ Downloaded scikit-learn
+ Downloaded nvidia-cuda-cupti
+ Downloaded onnx
+ Downloaded scikit-image
+ Downloaded numpy
+ Downloaded onnxruntime
+ Downloaded scipy
+ Downloaded nvidia-nvjitlink
+ Downloaded nvidia-curand
+ Downloaded nvidia-nvshmem-cu13
+ Downloaded opencv-python
+ Downloaded nvidia-cuda-nvrtc
+ Downloaded nvidia-cusparse
+ Downloaded nvidia-cusparselt-cu13
+ Downloaded nvidia-cusolver
+ Downloaded nvidia-cufft
+ Downloaded nvidia-nccl-cu13
+ Downloaded triton
+ Downloaded nvidia-cublas
+ Downloaded nvidia-cudnn-cu13
+ Downloaded torch
+      Built mmdet @ file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/third_party/mmdet
+      Built mmcv @ file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/third_party/mmcv
+Prepared 103 packages in 1m 00s
+Installed 103 packages in 5.31s
+ + addict==2.4.0
+ + appdirs==1.4.4
+ + asynctest==0.13.0
+ + attrs==26.1.0
+ + certifi==2026.10.23
+ + charset-normalizer==3.5.2
+ + cityscapesscripts==2.3.0
+ + click==8.5.0
+ + cloudpickle==3.1.2
+ + codecov==2.1.13
+ + colorama==0.4.6
+ + coloredlogs==15.0.1
+ + contourpy==1.3.2
+ + coverage==7.16.2
+ + cuda-bindings==13.4.4
+ + cuda-pathfinder==1.8.3
+ + cuda-toolkit==13.0.3.0
+ + cycler==0.12.1
+ + cython==3.3.1
+ + exceptiongroup==1.3.1
+ + filelock==4.1.0
+ + flake8==7.4.1
+ + flatbuffers==25.12.19
+ + fonttools==4.65.0
+ + fsspec==2026.9.0
+ + humanfriendly==10.0
+ + idna==3.20
+ + imagecorruptions==1.1.2
+ + imageio==2.38.0
+ + iniconfig==2.3.1
+ + interrogate==1.7.0
+ + isort==4.3.21
+ + jinja2==3.1.6
+ + joblib==1.6.0
+ + kiwisolver==1.5.1
+ + kwarray==0.7.2
+ + lazy-loader==0.6
+ + markupsafe==3.0.4
+ + matplotlib==3.10.9
+ + mccabe==0.7.0
+ + ml-dtypes==0.6.0
+ + mmcv==1.5.3 (from file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/third_party/mmcv)
+ + mmdet==2.25.0 (from file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/third_party/mmdet)
+ + mpmath==1.3.0
+ + networkx==3.4.2
+ + numpy==2.2.6
+ + nvidia-cublas==13.1.1.3
+ + nvidia-cuda-cupti==13.0.85
+ + nvidia-cuda-nvrtc==13.0.88
+ + nvidia-cuda-runtime==13.0.96
+ + nvidia-cudnn-cu13==9.24.0.43
+ + nvidia-cufft==12.0.0.61
+ + nvidia-cufile==1.15.1.6
+ + nvidia-curand==10.4.0.35
+ + nvidia-cusolver==12.0.4.66
+ + nvidia-cusparse==12.6.3.3
+ + nvidia-cusparselt-cu13==0.8.1
+ + nvidia-nccl-cu13==2.30.7
+ + nvidia-nvjitlink==13.4.92
+ + nvidia-nvshmem-cu13==3.4.5
+ + nvidia-nvtx==13.0.85
+ + onnx==1.23.2
+ + onnxruntime==1.23.2
+ + opencv-python==5.0.0.93
+ + packaging==26.3
+ + pillow==12.3.0
+ + piw3d==0.1.0 (from file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d)
+ + platformdirs==4.12.4
+ + pluggy==1.7.0
+ + protobuf==7.36.2
+ + py==1.11.0
+ + pycocotools==2.0.11
+ + pycodestyle==2.15.0
+ + pyflakes==4.0.3
+ + pygments==2.21.0
+ + pyparsing==3.3.3
+ + pyquaternion==0.9.9
+ + pytest==9.2.0
+ + python-dateutil==3.0.0
+ + pyyaml==6.0.3
+ + requests==2.34.2
+ + scikit-image==0.25.2
+ + scikit-learn==1.7.2
+ + scipy==1.15.3
+ + setuptools==84.2.1
+ + six==1.17.0
+ + sympy==1.14.0
+ + tabulate==0.10.0
+ + terminaltables==3.1.10
+ + threadpoolctl==3.7.0
+ + tifffile==2025.5.10
+ + tomli==2.5.0
+ + torch==2.14.1
+ + tqdm==4.70.1
+ + triton==3.8.0
+ + typing==3.10.0.0
+ + typing-extensions==4.16.0
+ + tzdata==2026.6
+ + ubelt==1.4.3
+ + urllib3==2.8.0
+ + xdoctest==1.3.2
+ + xtcocotools==1.14.3
+ + yapf==0.43.0
+Resolved 3 packages in 121ms
+Prepared 1 package in 20ms
+Uninstalled 1 package in 63ms
+Installed 2 packages in 120ms
+ - setuptools==84.2.1
+ + setuptools==81.0.0
+ + wheel==0.48.0
+[2026-11-04 11:38:39] installing mmcv (editable) with ops (CUDA=1)
+Using Python 3.10.18 environment at: /cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv
+Resolved 9 packages in 2.93s
+   Building mmcv-full @ file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/third_party/mmcv
+error: Failed to build `mmcv-full @ file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/third_party/mmcv`
+  cause: The build backend returned an error
+  cause: Call to `setuptools.build_meta:__legacy__.build_editable` failed (exit status: 1)
+
+         [stdout]
+         running editable_wheel
+         creating /cluster/raid/home/jajo/.cache/uv/builds-v0/.tmpzMmZbw/.tmp-cq7qyt58/mmcv_full.egg-info
+         writing /cluster/raid/home/jajo/.cache/uv/builds-v0/.tmpzMmZbw/.tmp-cq7qyt58/mmcv_full.egg-info/PKG-INFO
+         writing dependency_links to /cluster/raid/home/jajo/.cache/uv/builds-v0/.tmpzMmZbw/.tmp-cq7qyt58/mmcv_full.egg-info/dependency_links.txt
+         writing requirements to /cluster/raid/home/jajo/.cache/uv/builds-v0/.tmpzMmZbw/.tmp-cq7qyt58/mmcv_full.egg-info/requires.txt
+         writing top-level names to /cluster/raid/home/jajo/.cache/uv/builds-v0/.tmpzMmZbw/.tmp-cq7qyt58/mmcv_full.egg-info/top_level.txt
+         writing manifest file '/cluster/raid/home/jajo/.cache/uv/builds-v0/.tmpzMmZbw/.tmp-cq7qyt58/mmcv_full.egg-info/SOURCES.txt'
+         reading manifest file '/cluster/raid/home/jajo/.cache/uv/builds-v0/.tmpzMmZbw/.tmp-cq7qyt58/mmcv_full.egg-info/SOURCES.txt'
+         reading manifest template 'MANIFEST.in'
+         adding license file 'LICENSE'
+         adding license file 'LICENSES.md'
+         writing manifest file '/cluster/raid/home/jajo/.cache/uv/builds-v0/.tmpzMmZbw/.tmp-cq7qyt58/mmcv_full.egg-info/SOURCES.txt'
+         creating '/cluster/raid/home/jajo/.cache/uv/builds-v0/.tmpzMmZbw/.tmp-cq7qyt58/mmcv_full-1.5.3.dist-info'
+         creating /cluster/raid/home/jajo/.cache/uv/builds-v0/.tmpzMmZbw/.tmp-cq7qyt58/mmcv_full-1.5.3.dist-info/WHEEL
+         running build_py
+         running build_ext
+
+         [stderr]
+         <string>:6: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+         /cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/dist.py:765: SetuptoolsDeprecationWarning: License classifiers are deprecated.
+         !!
+
+                 ********************************************************************************
+                 Please consider removing the following classifiers in favor of a SPDX license expression:
+
+                 License :: OSI Approved :: Apache Software License
+
+                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+                 ********************************************************************************
+
+         !!
+           self._finalize_license_expression()
+         W1104 11:38:44.582000 2822708 torch/utils/cpp_extension.py:786] Attempted to use ninja as the BuildExtension backend but we could not find ninja.. Falling back to using the slow distutils backend.
+         /cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/_distutils/cmd.py:119: SetuptoolsDeprecationWarning: bdist_wheel.universal is deprecated
+         !!
+
+                 ********************************************************************************
+                 With Python 2.7 end-of-life, support for building universal wheels
+                 (i.e., wheels that support both Python 2 and Python 3)
+                 is being obviated.
+                 Please discontinue using this option, or if you still need it,
+                 file an issue with pypa/setuptools describing your use case.
+
+                 This deprecation is overdue, please update your project and remove deprecated
+                 calls to avoid build errors in the future.
+                 ********************************************************************************
+
+         !!
+           self.finalize_options()
+         Traceback (most recent call last):
+           File "<string>", line 11, in <module>
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/build_meta.py", line 474, in build_editable
+             return self._build_with_temp_dir(
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/build_meta.py", line 410, in _build_with_temp_dir
+             self.run_setup()
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/build_meta.py", line 520, in run_setup
+             super().run_setup(setup_script=setup_script)
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/build_meta.py", line 317, in run_setup
+             exec(code, locals())
+           File "<string>", line 392, in <module>
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/__init__.py", line 117, in setup
+             return distutils.core.setup(**attrs)  # type: ignore[return-value]
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/_distutils/core.py", line 186, in setup
+             return run_commands(dist)
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/_distutils/core.py", line 202, in run_commands
+             dist.run_commands()
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/_distutils/dist.py", line 1000, in run_commands
+             self.run_command(cmd)
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/dist.py", line 1107, in run_command
+             super().run_command(command)
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/_distutils/dist.py", line 1019, in run_command
+             cmd_obj.run()
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/command/editable_wheel.py", line 140, in run
+             self._create_wheel_file(bdist_wheel)
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/command/editable_wheel.py", line 350, in _create_wheel_file
+             files, mapping = self._run_build_commands(dist_name, unpacked, lib, tmp)
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/command/editable_wheel.py", line 273, in _run_build_commands
+             self._run_build_subcommands()
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/command/editable_wheel.py", line 300, in _run_build_subcommands
+             self.run_command(name)
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/_distutils/cmd.py", line 341, in run_command
+             self.distribution.run_command(command)
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/dist.py", line 1107, in run_command
+             super().run_command(command)
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/_distutils/dist.py", line 1019, in run_command
+             cmd_obj.run()
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/command/build_ext.py", line 97, in run
+             _build_ext.run(self)
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/setuptools/_distutils/command/build_ext.py", line 367, in run
+             self.build_extensions()
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/torch/utils/cpp_extension.py", line 822, in build_extensions
+             _check_cuda_version(compiler_name, compiler_version)
+           File "/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/lib/python3.10/site-packages/torch/utils/cpp_extension.py", line 651, in _check_cuda_version
+             raise RuntimeError(CUDA_MISMATCH_MESSAGE, cuda_str_version, torch.version.cuda)
+         RuntimeError: ('The detected CUDA version (%s) mismatches the version that was used to compilePyTorch (%s). Please make sure to use the same CUDA versions.', '12.8', '13.0')
+
+hint: Build failures usually indicate a problem with the package or the build environment

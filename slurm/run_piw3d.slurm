@@ -27,17 +27,11 @@
 #   CUDA_MODULE=cuda/13.0   PYTHON_MODULE=python/3.10
 #   PROVISION=auto|1   (1 provisions here instead of requiring setup first)
 # =============================================================================
-#SBATCH --job-name=piw3d
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
-#SBATCH --gres=gpu:1
-#SBATCH --mem=32G
-#SBATCH --time=24:00:00
-#SBATCH --output=slurm-%x-%j.out
-#SBATCH --error=slurm-%x-%j.err
-# #SBATCH --partition=<your-partition>
-# #SBATCH --account=<your-account>
+#SBATCH --cpus-per-task 1
+#SBATCH --mem 16G
+#SBATCH --qos normal
+#SBATCH --time 6:00:00
+#SBATCH --gres gpu:a100:2
 
 set -euo pipefail
 

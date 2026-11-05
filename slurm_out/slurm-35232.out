@@ -1,0 +1,37 @@
+[2026-11-04 10:16:40] === setup: /cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d (venv=/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv) ===
+ERROR: Unable to locate a modulefile for 'cuda/13.0'
+[2026-11-04 10:16:40] WARN: 'module load cuda/13.0' failed
+ERROR: Unable to locate a modulefile for 'python/3.10'
+[2026-11-04 10:16:40] WARN: 'module load python/3.10' failed
+[2026-11-04 10:16:40] creating venv at /cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv
+warning: Failed to parse `pyproject.toml` during settings discovery:
+  TOML parse error at line 47, column 1
+     |
+  47 | extra-build-dependencies = { mmcv = ["torch"], mmdet = ["torch"] }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+  unknown field `extra-build-dependencies`, expected one of `required-version`, `native-tls`, `offline`, `no-cache`, `cache-dir`, `preview`, `python-preference`, `python-downloads`, `concurrent-downloads`, `concurrent-builds`, `concurrent-installs`, `index`, `index-url`, `extra-index-url`, `no-index`, `find-links`, `index-strategy`, `keyring-provider`, `allow-insecure-host`, `resolution`, `prerelease`, `fork-strategy`, `dependency-metadata`, `config-settings`, `no-build-isolation`, `no-build-isolation-package`, `exclude-newer`, `link-mode`, `compile-bytecode`, `no-sources`, `upgrade`, `upgrade-package`, `reinstall`, `reinstall-package`, `no-build`, `no-build-package`, `no-binary`, `no-binary-package`, `python-install-mirror`, `pypy-install-mirror`, `python-downloads-json-url`, `publish-url`, `trusted-publishing`, `check-url`, `add-bounds`, `pip`, `cache-keys`, `override-dependencies`, `constraint-dependencies`, `build-constraint-dependencies`, `environments`, `required-environments`, `conflicts`, `workspace`, `sources`, `managed`, `package`, `default-groups`, `dependency-groups`, `dev-dependencies`, `build-backend`
+
+warning: Workspace member `/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/third_party/mmcv` is missing a `pyproject.toml` (matches: `third_party/mmcv`)
+Downloading cpython-3.10.18-linux-x86_64-gnu (download) (28.8MiB)
+ Downloading cpython-3.10.18-linux-x86_64-gnu (download)
+Using CPython 3.10.18
+Creating virtual environment at: .venv
+Activate with: source .venv/bin/activate
+[2026-11-04 10:16:44] uv sync --frozen (torch + locked deps; may need network access)
+warning: Failed to parse `pyproject.toml` during settings discovery:
+  TOML parse error at line 47, column 1
+     |
+  47 | extra-build-dependencies = { mmcv = ["torch"], mmdet = ["torch"] }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+  unknown field `extra-build-dependencies`, expected one of `required-version`, `native-tls`, `offline`, `no-cache`, `cache-dir`, `preview`, `python-preference`, `python-downloads`, `concurrent-downloads`, `concurrent-builds`, `concurrent-installs`, `index`, `index-url`, `extra-index-url`, `no-index`, `find-links`, `index-strategy`, `keyring-provider`, `allow-insecure-host`, `resolution`, `prerelease`, `fork-strategy`, `dependency-metadata`, `config-settings`, `no-build-isolation`, `no-build-isolation-package`, `exclude-newer`, `link-mode`, `compile-bytecode`, `no-sources`, `upgrade`, `upgrade-package`, `reinstall`, `reinstall-package`, `no-build`, `no-build-package`, `no-binary`, `no-binary-package`, `python-install-mirror`, `pypy-install-mirror`, `python-downloads-json-url`, `publish-url`, `trusted-publishing`, `check-url`, `add-bounds`, `pip`, `cache-keys`, `override-dependencies`, `constraint-dependencies`, `build-constraint-dependencies`, `environments`, `required-environments`, `conflicts`, `workspace`, `sources`, `managed`, `package`, `default-groups`, `dependency-groups`, `dev-dependencies`, `build-backend`
+
+   Building mmcv @ file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/third_party/mmcv
+   Building mmdet @ file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/third_party/mmdet
+   Building piw3d @ file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d
+  × Failed to build `piw3d @
+  │ file:///cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d`
+  ╰─▶ Workspace member
+      `/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/third_party/mmcv`
+      is missing a `pyproject.toml` (matches: `third_party/mmcv`)
+[2026-11-04 10:16:44] ERROR: 'uv sync' failed. Run the setup job on a login node with network,
+[2026-11-04 10:16:44]        then submit the run job against the same $VENV.

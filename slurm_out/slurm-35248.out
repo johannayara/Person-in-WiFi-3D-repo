@@ -1,0 +1,8 @@
+[2026-11-04 13:43:04] === run: mode=train_test config=configs/wifi/petr_wifi.py gpus=1 epochs=1 limit=64 ===
+ERROR: Unable to locate a modulefile for 'cuda/13.0'
+[2026-11-04 13:43:04] WARN: 'module load cuda/13.0' failed; run 'module avail 2>&1 | grep -i cuda' and set CUDA_MODULE
+ERROR: Unable to locate a modulefile for 'python/3.10'
+[2026-11-04 13:43:04] WARN: 'module load python/3.10' failed; run 'module avail 2>&1 | grep -i python' and set PYTHON_MODULE
+[2026-11-04 13:43:04] uv 0.13.7 (>= 0.13.6) at /cluster/raid/home/jajo/.local/bin/uv
+[2026-11-04 13:43:04] ERROR: environment not provisioned (/cluster/raid/home/jajo/Person-in-WiFi-3D-repo/piw3d/.venv/.piw3d-docs-env missing).
+[2026-11-04 13:43:04]        Submit slurm/setup_piw3d.slurm first, or set PROVISION=1.
