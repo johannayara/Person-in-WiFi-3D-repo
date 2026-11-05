@@ -12,16 +12,20 @@
 #     sbatch slurm/setup_piw3d.slurm
 #
 # Needs network access (uv sync + pip installs), so submit it to a login/CPU
-# node that has internet. Compiling mmcv's CUDA ops needs nvcc: load a CUDA
-# module (default CUDA_MODULE=cuda/13.0) or set FORCE_CUDA=1. A GPU device is
-# not required to compile.
+# node that has internet. Compiling mmcv's CUDA ops needs nvcc matching the
+# torch wheel's CUDA (13.0). Load a CUDA module (CUDA_MODULE) if the cluster
+# has one; otherwise the default CUDA_TOOLKIT=auto installs a matching toolkit
+# from PyPI. A GPU device is not required to compile.
 #
 # Can also be run interactively on a login node:
 #     bash slurm/setup_piw3d.slurm
 #
 # Knobs (all optional):
-#   VENV=$PWD/.venv   PY_VERSION=3.10   UV=uv
+#   VENV=$PWD/.venv   PY_VERSION=3.10   UV=uv   UV_MIN_VERSION=0.13.6
+#   (uv is installed/upgraded automatically when older than UV_MIN_VERSION)
 #   CUDA_MODULE=cuda/13.0   PYTHON_MODULE=python/3.10
+#   CUDA_TOOLKIT=auto|pip|none  (auto installs a matching toolkit from PyPI
+#                                when the cluster has no matching nvcc)
 #   BUILD_MMCV_OPS=auto|1|0   FORCE_CUDA=auto|1|0   SYNC=auto|0
 #   PROVISION=auto|0   (0 = only uv sync, skip the docs install steps)
 # =============================================================================
