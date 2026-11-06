@@ -2,12 +2,18 @@
 # =============================================================================
 # Person-in-WiFi 3D -- SLURM run script (training + evaluation)
 #
-# Requires the environment provisioned by slurm/setup_piw3d.slurm. Submit from
-# the repository root (SLURM_SUBMIT_DIR locates the project):
+# Runs inside a single conda environment (default: piw3d) that already has the
+# project's dependencies installed (torch, mmcv with ops, mmdet, opera). Build
+# it once, e.g.:
+#
+#     conda create -n piw3d python=3.10
+#     conda activate piw3d
+#     # then follow docs/get_started.md (mmcv ops, mmdet, opera)
+#
+# Submit from the repository root (SLURM_SUBMIT_DIR locates the project):
 #
 #     cd /path/to/piw3d
-#     sbatch slurm/setup_piw3d.slurm     # once
-#     sbatch slurm/run_piw3d.slurm       # then run
+#     sbatch slurm/run_piw3d.slurm
 #
 # Defaults are a fast smoke test: 1 epoch over 64 frames, then evaluation.
 #
@@ -23,9 +29,10 @@
 # Knobs (all optional):
 #   MODE=train|test|train_test   GPUS=1   EPOCHS=1   LIMIT=64
 #   CONFIG=configs/wifi/petr_wifi.py   CHECKPOINT=   EVAL=mpjpe
-#   SAMPLES_PER_GPU=32   VENV=$PWD/.venv
-#   CUDA_MODULE=cuda/13.0   PYTHON_MODULE=python/3.10
-#   PROVISION=auto|1   (1 provisions here instead of requiring setup first)
+#   SAMPLES_PER_GPU=32
+#   CONDA_ENV=piw3d   CONDA_EXE=/path/to/conda   (auto-detected when unset)
+#   CUDA_MODULE=cuda/13.0   (use "none" to skip; not required when the env
+#                            already ships torch's bundled CUDA runtime)
 # =============================================================================
 #SBATCH --cpus-per-task 1
 #SBATCH --mem 16G
@@ -43,15 +50,81 @@ CONFIG="${CONFIG:-configs/wifi/petr_wifi.py}"
 CHECKPOINT="${CHECKPOINT:-}"
 EVAL="${EVAL:-mpjpe}"
 SAMPLES_PER_GPU="${SAMPLES_PER_GPU:-32}"
+CONDA_ENV="${CONDA_ENV:-piw3d}"
+CONDA_EXE="${CONDA_EXE:-}"
+CUDA_MODULE="${CUDA_MODULE:-cuda/13.0}"
 
 PROJECT_DIR="${PROJECT_DIR:-${SLURM_SUBMIT_DIR:-$PWD}}"
-source "$PROJECT_DIR/slurm/piw3d_env.sh"
+
+log() { echo "[$(date '+%F %T')] $*"; }
+
+# Optional cluster toolkit module (GPU runtime/driver). Skipped when the conda
+# env already bundles what torch needs, or when the cluster exposes none.
+load_cluster_modules() {
+    if [ "$CUDA_MODULE" = "none" ]; then
+        return 0
+    fi
+    if ! command -v module >/dev/null 2>&1; then
+        log "WARN: no 'module' command; using the current environment"
+        return 0
+    fi
+    module purge || true
+    module load "$CUDA_MODULE" \
+        || log "WARN: 'module load $CUDA_MODULE' failed; run 'module avail 2>&1 | grep -i cuda' and set CUDA_MODULE"
+}
+
+# Put the conda env's bin/ first on PATH. Sources conda.sh (rather than relying
+# on an interactive shell hook) so `conda activate` works under sbatch.
+activate_conda_env() {
+    local conda="$CONDA_EXE" base
+    if [ -z "$conda" ]; then
+        if [ -n "${CONDA_EXE:-}" ]; then
+            conda="$CONDA_EXE"
+        elif command -v conda >/dev/null 2>&1; then
+            conda="$(command -v conda)"
+        elif [ -n "${CONDA_PREFIX:-}" ]; then
+            conda="$CONDA_PREFIX/bin/conda"
+        fi
+    fi
+    if [ -z "$conda" ]; then
+        log "ERROR: could not find 'conda'. Set CONDA_EXE=/path/to/conda."
+        return 1
+    fi
+    base="$("$conda" info --base 2>/dev/null || true)"
+    if [ -z "$base" ] || [ ! -f "$base/etc/profile.d/conda.sh" ]; then
+        log "ERROR: could not locate conda.sh via '$conda info --base' (got '$base')."
+        log "       Set CONDA_EXE to the conda installation that owns '$CONDA_ENV'."
+        return 1
+    fi
+    # shellcheck disable=SC1090
+    source "$base/etc/profile.d/conda.sh"
+    if ! conda activate "$CONDA_ENV"; then
+        log "ERROR: 'conda activate $CONDA_ENV' failed; create the env first or set CONDA_ENV."
+        return 1
+    fi
+    log "conda env: $CONDA_PREFIX (python: $(command -v python))"
+}
+
+# Prove the conda env actually carries the project's dependencies.
+verify_env() {
+    python - <<'PY'
+import os
+import sys
+import torch, mmcv, mmdet, opera
+expected = os.path.join(os.environ["PROJECT_DIR"], "third_party", "mmcv")
+assert os.path.realpath(mmcv.__file__).startswith(os.path.realpath(expected)), mmcv.__file__
+import mmcv._ext  # noqa: F401  (C++/CUDA ops)
+print("env OK: python=%s torch=%s mmcv=%s mmdet=%s opera=%s cuda=%s"
+      % (sys.executable, torch.__version__, mmcv.__version__,
+         mmdet.__version__, opera.__version__, torch.version.cuda))
+PY
+}
+
 cd "$PROJECT_DIR"
 
 log "=== run: mode=$MODE config=$CONFIG gpus=$GPUS epochs=$EPOCHS limit=$LIMIT ==="
 load_cluster_modules
-require_uv
-require_docs_env
+activate_conda_env
 export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-8}"
 export PYTHONPATH="$PROJECT_DIR${PYTHONPATH:+:$PYTHONPATH}"
 verify_env
@@ -91,11 +164,11 @@ run_train() {
     local args=("$CONFIG" --work-dir "$WORK_DIR" --cfg-options "${CFG_OPTIONS[@]}")
     if [ "$GPUS" -gt 1 ]; then
         log "training: gpus=$GPUS"
-        "$VENV/bin/torchrun" --standalone --nproc_per_node="$GPUS" \
+        torchrun --standalone --nproc_per_node="$GPUS" \
             tools/train.py "${args[@]}" --launcher pytorch
     else
         log "training: gpus=1"
-        "$VENV/bin/python" tools/train.py "${args[@]}"
+        python tools/train.py "${args[@]}"
     fi
 }
 
@@ -109,11 +182,11 @@ run_test() {
                 --cfg-options "${CFG_OPTIONS[@]}")
     if [ "$GPUS" -gt 1 ]; then
         log "evaluating: $ckpt (metric=$EVAL, gpus=$GPUS)"
-        "$VENV/bin/torchrun" --standalone --nproc_per_node="$GPUS" \
+        torchrun --standalone --nproc_per_node="$GPUS" \
             tools/test.py "${args[@]}" --launcher pytorch
     else
         log "evaluating: $ckpt (metric=$EVAL, gpus=1)"
-        "$VENV/bin/python" tools/test.py "${args[@]}"
+        python tools/test.py "${args[@]}"
     fi
 }
 
